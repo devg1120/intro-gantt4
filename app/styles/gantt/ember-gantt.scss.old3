@@ -1,8 +1,8 @@
-/*
+
 .scroll-base::-webkit-scrollbar {  
-  display: none; 
+  display: none; /*Google Chrome、Safari、Microsoft Edge対応のスクロールバー非表示コード*/
 }
-*/
+
 
 
 
@@ -16,7 +16,6 @@
 //$gantt-animation-duration: 200ms;
 $gantt-animation-duration: 0ms;
 $gantt-line-height: 40px;
-//$gantt-line-bar-height: 36px;
 $gantt-line-bar-height: 36px;
 $gantt-line-title-width: 200px;
 
@@ -297,11 +296,9 @@ $gantt-weekend-background: #efefef;
 .gantt-line-bar {
   position: absolute;
   //position: relative;
-  top: -22px;
   height: $gantt-line-bar-height;
   //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
-  //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
-  margin-top:  calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
 
   border-radius: 2px;
 
