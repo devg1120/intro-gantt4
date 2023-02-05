@@ -5,8 +5,10 @@
   <SubGanttLineTitle   @child_stack={{this.child_stack}} @project={{@project}}  @onClick={{this.collapse_toggle}} />
   
   <div class="gantt-line-timeline">
-
+<!--
        <div class="gantt-line-bar" style={{this.barStyle}} title={{this.barTitle}} >
+-->
+       <div class="gantt-child-line-bar" style={{this.barStyle}} title={{this.barTitle}} >
 
           <div class="gantt-line-bar-content ember-view">{{@project.title}}</div>
 	 

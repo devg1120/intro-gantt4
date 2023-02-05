@@ -24,7 +24,8 @@
    <div class="scroll-base" style="z-index:100; background-color:#ffff; height:300px;overflow-y:scroll; scrollbar-width: none;">
    -->
    <div class="gantt-titles-background" ></div>
-     <div class="gantt-lines " style="z-index:100; background-color:#ffff; height:300px;overflow-y:scroll; scrollbar-width: none;">
+     <div class="gantt-lines " style="z-index:100; background-color:#ffff; height:300px;overflow-y:scroll; scrollbar-width: none;"
+     >
    
         {{#each this.projects as |project|}}
              <GanttLine  @dateStart={{project.minStartDate}}

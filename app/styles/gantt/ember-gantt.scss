@@ -18,6 +18,7 @@ $gantt-animation-duration: 0ms;
 $gantt-line-height: 40px;
 //$gantt-line-bar-height: 36px;
 $gantt-line-bar-height: 36px;
+$gantt-child-line-bar-height: 20px;
 $gantt-line-title-width: 200px;
 
 $gantt-border-color: #ccc;
@@ -84,8 +85,8 @@ $gantt-weekend-background: #efefef;
   .gantt-timeline-vertical-grid {
     position: absolute;
     top: 0;
-    height: 99999999px;
-    //height: 700px;  // GS
+    //height: 99999999px;
+    height: 700px;  // GS
     //height: auto;
 
     .gantt-timeline-months,
@@ -270,11 +271,14 @@ $gantt-weekend-background: #efefef;
 
   .gantt-line-timeline {
     position: relative; // scroll with grid
+    //position: absolute; // scroll with grid
     margin-left: $gantt-line-title-width;
 
-    // border-bottom: 1px solid red; // DEBUG
+     border-bottom: 1px solid red; // DEBUG
   }
+  
 }
+
 
 .gantt-line-title {
   //position: absolute;
@@ -295,13 +299,14 @@ $gantt-weekend-background: #efefef;
 }
 
 .gantt-line-bar {
-  position: absolute;
-  //position: relative;
-  top: -22px;
+  //position: absolute;
+  position: relative;
+  //top: -22px;
   height: $gantt-line-bar-height;
   //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
   //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
-  margin-top:  calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:  -26+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  margin-top:  -41+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
 
   border-radius: 2px;
 
@@ -332,6 +337,50 @@ $gantt-weekend-background: #efefef;
     cursor: move;
   }
 }
+
+.gantt-child-line-bar {
+  //position: absolute;
+  position: relative;
+  //top: -22px;
+  height: $gantt-child-line-bar-height;
+  //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
+  //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:  -26+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  margin-top:  -36+ calc(($gantt-line-height - $gantt-child-line-bar-height) / 2) ;
+
+  border-radius: 2px;
+
+  //transition: left $gantt-animation-duration ease-out, width $gantt-animation-duration ease-out;
+
+  // background + printable
+  -webkit-print-color-adjust: exact;
+  background: #6d94d3;
+  color-adjust: exact;
+
+  // bar-controls
+  .bar-resize-l,
+  .bar-resize-r {
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 15px;
+    // z-index: 1; // above this bar (above move)
+    cursor: w-resize;
+  }
+  .bar-resize-r {
+    left: auto;
+    right: 0;
+    cursor: e-resize;
+  }
+
+  &.gantt-line-bar-editable {
+    cursor: move;
+  }
+}
+
+
+
+
 .gantt-line-bar-content {
   position: absolute;
   color: #fff;

@@ -81,7 +81,8 @@ export default class ChildLineComponent extends Component {
 
 
     // bar reference
-    let bar = this.element.querySelector('.gantt-line-bar');
+    //let bar = this.element.querySelector('.gantt-line-bar');
+    let bar = this.element.querySelector('.gantt-child-line-bar');
     set(this, 'barElement', bar);
 
     // chart reference

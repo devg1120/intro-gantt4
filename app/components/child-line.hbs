@@ -8,8 +8,10 @@
       </span>
    </div>
    <div class="gantt-line-timeline">
-  
+  <!--
        <div class="gantt-line-bar  {{if this.isEditable 'gantt-line-bar-editable'}}" style={{this.barStyle}} >
+       -->
+       <div class="gantt-child-line-bar  {{if this.isEditable 'gantt-line-bar-editable'}}" style={{this.barStyle}} >
    
 	    
 	    <div class="gantt-line-bar-content ember-view">{{@job.title}}</div>
