@@ -3,7 +3,9 @@
   display: none; 
 }
 */
-
+.gantt-chart-inner::-webkit-scrollbar{
+  display: none;    // scroll bar 非表示
+}
 
 
 /**
@@ -14,11 +16,13 @@
 
 // VARS
 //$gantt-animation-duration: 200ms;
+
 $gantt-animation-duration: 0ms;
 $gantt-line-height: 40px;
-//$gantt-line-bar-height: 36px;
+
 $gantt-line-bar-height: 36px;
 $gantt-child-line-bar-height: 20px;
+
 $gantt-line-title-width: 200px;
 
 $gantt-border-color: #ccc;
@@ -37,7 +41,6 @@ $gantt-weekend-background: #efefef;
 .gantt-chart-inner {
   overflow-x: scroll;
   overflow-y: hidden;
-
   padding-bottom: 50px;
   background: #fff;
   border: 1px solid $gantt-border-color;
@@ -84,9 +87,9 @@ $gantt-weekend-background: #efefef;
 
   .gantt-timeline-vertical-grid {
     position: absolute;
-    top: 0;
-    //height: 99999999px;
-    height: 700px;  // GS
+    //top: 0;
+    height: 99999999px;
+    //height: 700px;  // GS
     //height: auto;
 
     .gantt-timeline-months,
@@ -132,20 +135,34 @@ $gantt-weekend-background: #efefef;
   }
 }
 
-
+/*
 .collapse {
   &:not(.show) {
-    display: none;
-    overflow: hidden;
-    transition: height 500ms ease-in;
+    //display: none;
+    //overflow: hidden;
+    //transition: height 500ms ease-in;
+    transition-duration: 1.85s;
   }
 }
+*/
 
-
+/*
 .collapsing {
   height: 0;
   overflow: hidden;
   transition: height 800ms ease-out;
+}
+*/
+
+.collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    //-webkit-transition: height 1.85s ease;
+    -webkit-transition: all 1.85s ease;
+    //transition: height 1.85s ease;
+    //transition-duration: 1.85s;
+
 }
 
 // header
@@ -274,7 +291,7 @@ $gantt-weekend-background: #efefef;
     //position: absolute; // scroll with grid
     margin-left: $gantt-line-title-width;
 
-     border-bottom: 1px solid red; // DEBUG
+     //border-bottom: 1px solid red; // DEBUG
   }
   
 }
@@ -306,9 +323,11 @@ $gantt-weekend-background: #efefef;
   //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
   //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
   //margin-top:  -26+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
-  margin-top:  -41+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:  -41+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:  -41+ calc(($gantt-line-height - $gantt-line-bar-height) / 2 - $gantt-line-height) ;
+  margin-top:   calc(($gantt-line-height - $gantt-line-bar-height) / 2 - $gantt-line-height) ;
 
-  border-radius: 2px;
+  border-radius: 0px;
 
   //transition: left $gantt-animation-duration ease-out, width $gantt-animation-duration ease-out;
 
@@ -346,9 +365,11 @@ $gantt-weekend-background: #efefef;
   //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
   //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
   //margin-top:  -26+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
-  margin-top:  -36+ calc(($gantt-line-height - $gantt-child-line-bar-height) / 2) ;
+  //margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - 36px) ;
+  //margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - $gantt-line-bar-height) ;
+  margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - $gantt-line-bar-height + 3px ) ;
 
-  border-radius: 2px;
+  border-radius: 10px;
 
   //transition: left $gantt-animation-duration ease-out, width $gantt-animation-duration ease-out;
 
@@ -377,6 +398,50 @@ $gantt-weekend-background: #efefef;
     cursor: move;
   }
 }
+
+.gantt-subproj-line-bar {
+  //position: absolute;
+  position: relative;
+  //top: -22px;
+  height: $gantt-child-line-bar-height;
+  //margin-top: (($gantt-line-height - $gantt-line-bar-height) / 2);
+  //margin-top: calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:  -26+ calc(($gantt-line-height - $gantt-line-bar-height) / 2) ;
+  //margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - 36px) ;
+  //margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - $gantt-line-bar-height) ;
+  margin-top:   calc(($gantt-line-height - $gantt-child-line-bar-height) / 2 - $gantt-line-bar-height + 3px ) ;
+
+  border-radius: 0px;
+
+  //transition: left $gantt-animation-duration ease-out, width $gantt-animation-duration ease-out;
+
+  // background + printable
+  -webkit-print-color-adjust: exact;
+  background: #6d94d3;
+  color-adjust: exact;
+
+  // bar-controls
+  .bar-resize-l,
+  .bar-resize-r {
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    width: 15px;
+    // z-index: 1; // above this bar (above move)
+    cursor: w-resize;
+  }
+  .bar-resize-r {
+    left: auto;
+    right: 0;
+    cursor: e-resize;
+  }
+
+  &.gantt-line-bar-editable {
+    cursor: move;
+  }
+}
+
+
 
 
 

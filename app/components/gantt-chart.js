@@ -275,25 +275,34 @@ export default class GanttChartComponent extends Component {
     //https://web-designer.cman.jp/javascript_ref/event_list/
 	
     @action onMouseDown(e) {
-        if (e.target.className.indexOf('day') !== -1) {
+        //if (e.target.className.indexOf('day') !== -1) {
+        //if (e.target.className == 'day') {
+        //if (e.target.className == 'gantt-line-timeline') {
+        if (e.target.className == 'gantt-line-timeline' || e.target.className == 'day') {
            e.preventDefault();
 	   //e.stopPropagation();
            console.log("mouse down")
 	   this.mouse_moving = true;
-           //this.scrolling = true;
+           this.scrolling = true;
 	}
     }
     @action onMouseUp(e) {
         //if (e.target.className.indexOf('day') !== -1) {
+        //if (e.target.className == 'day') {
+        //if (e.target.className == 'gantt-line-timeline') {
+        if (e.target.className == 'gantt-line-timeline' || e.target.className == 'day') {
            e.preventDefault();
 	   //e.stopPropagation();
-           console.log("mouse up")
+           console.log("mouse up:", e.target.className)
 	   this.mouse_moving = false;
-           //this.scrolling = false;
-	//}
+           this.scrolling = false;
+	}
     }
     @action onMouseMove(e) {
-        if (e.target.className.indexOf('day') !== -1) {
+        //if (e.target.className.indexOf('day') !== -1) {
+        //if (e.target.className == 'day') {
+        //if (e.target.className == 'gantt-line-timeline') {
+        if (e.target.className == 'gantt-line-timeline' || e.target.className == 'day') {
            if (this.mouse_moving) {
                    //console.log(typeof(e.target.className))
                    console.log(e.target.className)

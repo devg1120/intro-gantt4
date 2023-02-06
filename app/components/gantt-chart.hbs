@@ -1,11 +1,14 @@
+<!--
+<div class="ember-view"  style="height:100%"  >
+-->
 
 <button type="button" {{on "click" (fn this.zoom 5)}}>Zoom in</button> | <button type="button" {{on "click" (fn this.zoom -5)}}>Zoom out</button>
 <br><br>
 
 
-<div class="gantt-chart ember-view" {{did-insert this.createElement}} >
+<div class="gantt-chart ember-view"  style="height:100%" {{did-insert this.createElement}} >
 
-   <div class="gantt-chart-inner"   
+   <div class="gantt-chart-inner"    style="height:100%" 
                 {{on "mousedown" this.onMouseDown}}
                 {{on "mouseup"   this.onMouseUp  }}
                 {{on "mousemove"  this.onMouseMove }}
@@ -24,7 +27,10 @@
    <div class="scroll-base" style="z-index:100; background-color:#ffff; height:300px;overflow-y:scroll; scrollbar-width: none;">
    -->
    <div class="gantt-titles-background" ></div>
+<!--
      <div class="gantt-lines " style="z-index:100; background-color:#ffff; height:300px;overflow-y:scroll; scrollbar-width: none;"
+-->
+     <div class="gantt-lines " style="z-index:100; background-color:#ffff; height:100%;overflow-y:scroll; scrollbar-width: none;"
      >
    
         {{#each this.projects as |project|}}
@@ -46,3 +52,6 @@
    </div>
    -->
 </div>
+<!--
+</div>
+-->

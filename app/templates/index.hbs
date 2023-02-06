@@ -10,7 +10,7 @@ Day width (px): {{input value=dayWidth}}<br><br>
 <button type="button" {{on "click" (fn this.zoom 5)}}>Zoom in</button> | <button type="button" {{on "click" (fn this.zoom -5)}}>Zoom out</button>
 <br><br>
 
-
+<div  style="height:600px">
 <GanttChart @dayWidth       =  {{this.dayWidth}}
             @viewStartDate  = {{this.viewStartDate}}
 	    @infinityScroll = {{false }}
@@ -18,3 +18,4 @@ Day width (px): {{input value=dayWidth}}<br><br>
 >
 </GanttChart>
 
+</div>
